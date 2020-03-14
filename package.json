@@ -1,0 +1,17 @@
+{
+  "name": "postgres-recipe-book",
+  "version": "1.0.0",
+  "description": "A recipe book web app based on Node.js and PostgreSQL.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Feng",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "pg": "^7.18.2"
+  }
+}
