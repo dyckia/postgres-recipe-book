@@ -18,16 +18,16 @@
                     <form method="POST" action="/add">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="name">Recipe Name</label>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <label for="create-modal-name">Recipe Name</label>
+                                <input type="text" class="form-control" id="create-modal-name" name="name">
                             </div>
                             <div class="form-group">
-                                <label for="ingredients">Ingredients</label>
-                                <textarea type="text" class="form-control" id="ingredients" name="ingredients"></textarea>
+                                <label for="create-modal-ingredients">Ingredients</label>
+                                <textarea type="text" class="form-control" id="ingredients" name="create-modal-ingredients" rows="4"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="directions">Directions</label>
-                                <textarea type="text" class="form-control" id="directions" name="directions"></textarea>
+                                <label for="create-modal-directions">Directions</label>
+                                <textarea type="text" class="form-control" id="directions" name="create-modal-directions" rows="6"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -38,42 +38,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- recipes -->
-        <% recipes.forEach(recipe => { %>
-            <div class="col-10 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">
-                                <%= recipe.name %>
-                            </h5>
-                            <a href="#r<%= recipe.id %>" data-toggle="collapse" class="btn btn-outline-primary expand-btn">
-                                <i class="fas fa-caret-down"></i>
-                            </a>
-                        </div>
-                        <div class="collapse" id="r<%= recipe.id %>">
-                            <h6 class="card-subtitle text-muted font-italic mt-3 mb-2 ">Ingredients</h6>
-                            <p class="card-text">
-                                <%= recipe.ingredients %>
-                            </p>
-                            <h6 class="card-subtitle text-muted font-italic mt-3 mb-2">Directions</h6>
-                            <p class="card-text">
-                                <%= recipe.directions %>
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <a href="#" class="btn btn-outline-info mr-3">
-                                    Edit
-                                </a>
-                                <a href="#" class="btn btn-outline-danger">
-                                    Delete
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% }) %>
+        
+        <%- include('partials/recipecard') %>
     </div>
 </div>
 

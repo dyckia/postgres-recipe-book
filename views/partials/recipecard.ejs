@@ -1,0 +1,70 @@
+<!-- recipes -->
+<% recipes.forEach(recipe => { %>
+    <div class="col-10 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5 class="card-title">
+                        <%= recipe.name %>
+                    </h5>
+                    <a href="#r<%= recipe.id %>" data-toggle="collapse" class="btn btn-outline-primary expand-btn">
+                        <i class="fas fa-caret-down"></i>
+                    </a>
+                </div>
+                <div class="collapse" id="r<%= recipe.id %>">
+                    <h6 class="card-subtitle text-muted font-italic mt-3 mb-2">Ingredients</h6>
+                    <p class="card-text">
+                        <%= recipe.ingredients %>
+                    </p>
+                    <h6 class="card-subtitle text-muted font-italic mt-3 mb-2">Directions</h6>
+                    <p class="card-text">
+                        <%= recipe.directions %>
+                    </p>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-outline-info mr-3 edit-recipe" data-toggle="modal" data-target="#edit-recipe"
+                                data-id="<%= recipe.id %>" data-name="<%= recipe.name %>" data-ingredients="<%= recipe.ingredients %>" data-directions="<%= recipe.directions %>">
+                            Edit
+                        </button>
+                        <button class="btn btn-outline-danger delete-recipe" data-id="<%= recipe.id %>">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% }) %>
+
+<!-- Modal -->
+<div class="modal fade" id="edit-recipe" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Recipe</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="" id="edit-modal">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="edit-modal-name">Recipe Name</label>
+                        <input type="text" class="form-control" id="edit-modal-name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-modal-ingredients">Ingredients</label>
+                        <textarea type="text" class="form-control" id="edit-modal-ingredients" name="ingredients" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-modal-directions">Directions</label>
+                        <textarea type="text" class="form-control" id="edit-modal-directions" name="directions" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
