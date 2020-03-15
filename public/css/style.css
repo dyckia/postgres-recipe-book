@@ -1,0 +1,9 @@
+body {
+    margin-top: 10px;
+    background: #f9f9f9;
+}
+
+.expand-btn {
+    font-size: 1.4rem;
+    padding: 0px 10px;
+}
