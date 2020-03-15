@@ -33,8 +33,8 @@ app.post('/add', (req, res) => {
         ssl: SSL,
     });
     client.connect();
-    client.query('INSERT INTO recipes(name, ingredients, directions) VALUES($1, $2, $3)',
-                 [req.body.name, req.body.ingredients, req.body.directions],
+    client.query('INSERT INTO recipes(name, imgurl, ingredients, directions) VALUES($1, $2, $3, $4)',
+        [req.body.name, req.body.imgurl, req.body.ingredients, req.body.directions],
                  (err, result) => {
         res.redirect('/');
         client.end();
@@ -49,8 +49,8 @@ app.post('/edit/:id', (req, res) => {
         ssl: SSL,
     });
     client.connect();
-    client.query('UPDATE recipes SET name=$1, ingredients=$2, directions=$3 WHERE id=$4',
-        [req.body.name, req.body.ingredients, req.body.directions, req.params.id],
+    client.query('UPDATE recipes SET name=$1, imgurl=$2, ingredients=$3, directions=$4 WHERE id=$5',
+        [req.body.name, req.body.imgurl, req.body.ingredients, req.body.directions, req.params.id],
         (err, result) => {
             res.redirect('/');
             client.end();

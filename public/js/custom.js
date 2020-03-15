@@ -19,6 +19,7 @@ $(document).ready(function() {
 
     $('.edit-recipe').one('click', function() {
         $('#edit-form-name').val($(this).data('name'));
+        $('#edit-form-imgurl').val($(this).data('imgurl'));
         $('#edit-form-ingredients').val($(this).data('ingredients'));
         $('#edit-form-directions').val($(this).data('directions'));
         $('#edit-form').attr('action', '/edit/' + $(this).data('id'));
