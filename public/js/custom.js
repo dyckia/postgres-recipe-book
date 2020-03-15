@@ -18,9 +18,9 @@ $(document).ready(function() {
     });
 
     $('.edit-recipe').one('click', function() {
-        $('#edit-modal-name').val($(this).data('name'));
-        $('#edit-modal-ingredients').val($(this).data('ingredients'));
-        $('#edit-modal-directions').val($(this).data('directions'));
-        $('#edit-modal').attr('action', '/edit/' + $(this).data('id'));
+        $('#edit-form-name').val($(this).data('name'));
+        $('#edit-form-ingredients').val($(this).data('ingredients'));
+        $('#edit-form-directions').val($(this).data('directions'));
+        $('#edit-form').attr('action', '/edit/' + $(this).data('id'));
     });
 });
