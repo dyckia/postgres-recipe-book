@@ -8,14 +8,16 @@ app.set('view options', {rmWhitespace: true});
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
+// some constant variables
+const PORT = process.env.PORT || 3000;
+const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://Ostu:12345@localhost:5432/recipebookdb';
+const SSL = process.env.DATABASE_URL ? true : false;
+
 // READ recipe
 app.get('/', (req, res) => {
     const client = new Client({
-        user: 'Ostu',
-        host: 'localhost',
-        database: 'recipebookdb',
-        password: '12345',
-        port: 5432,
+        connectionString: DATABASE_URL,
+        ssl: SSL,
     });
     client.connect();
     client.query('SELECT * FROM recipes ORDER BY id', (err, result) => {
@@ -27,11 +29,8 @@ app.get('/', (req, res) => {
 // CREATE recipe
 app.post('/add', (req, res) => {
     const client = new Client({
-        user: 'Ostu',
-        host: 'localhost',
-        database: 'recipebookdb',
-        password: '12345',
-        port: 5432,
+        connectionString: DATABASE_URL,
+        ssl: SSL,
     });
     client.connect();
     client.query('INSERT INTO recipes(name, ingredients, directions) VALUES($1, $2, $3)',
@@ -46,11 +45,8 @@ app.post('/add', (req, res) => {
 // UPDATE recipe
 app.post('/edit/:id', (req, res) => {
     const client = new Client({
-        user: 'Ostu',
-        host: 'localhost',
-        database: 'recipebookdb',
-        password: '12345',
-        port: 5432,
+        connectionString: DATABASE_URL,
+        ssl: SSL,
     });
     client.connect();
     client.query('UPDATE recipes SET name=$1, ingredients=$2, directions=$3 WHERE id=$4',
@@ -64,11 +60,8 @@ app.post('/edit/:id', (req, res) => {
 // DELETE recipe
 app.delete('/delete/:id', (req, res) => {
     const client = new Client({
-        user: 'Ostu',
-        host: 'localhost',
-        database: 'recipebookdb',
-        password: '12345',
-        port: 5432,
+        connectionString: DATABASE_URL,
+        ssl: SSL,
     });
     client.connect();
     client.query('DELETE FROM recipes WHERE id = $1',
@@ -79,6 +72,6 @@ app.delete('/delete/:id', (req, res) => {
         });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("server is listening on port 3000");
 });
