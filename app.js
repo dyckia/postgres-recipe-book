@@ -1,5 +1,4 @@
 const express = require('express'),
-      path = require('path'),
       bodyParser = require('body-parser'),
       {Client} = require('pg'),
       app = express();
@@ -9,6 +8,7 @@ app.set('view options', {rmWhitespace: true});
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
+// READ recipe
 app.get('/', (req, res) => {
     const client = new Client({
         user: 'Ostu',
@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
     });
 });
 
+// CREATE recipe
 app.post('/add', (req, res) => {
     const client = new Client({
         user: 'Ostu',
@@ -41,23 +42,8 @@ app.post('/add', (req, res) => {
     });
 });
 
-app.delete('/delete/:id', (req, res) => {
-    const client = new Client({
-        user: 'Ostu',
-        host: 'localhost',
-        database: 'recipebookdb',
-        password: '12345',
-        port: 5432,
-    });
-    client.connect();
-    client.query('DELETE FROM recipes WHERE id = $1',
-        [req.params.id],
-        (err, result) => {
-            res.sendStatus(200);
-            client.end();
-        });
-});
 
+// UPDATE recipe
 app.post('/edit/:id', (req, res) => {
     const client = new Client({
         user: 'Ostu',
@@ -71,6 +57,24 @@ app.post('/edit/:id', (req, res) => {
         [req.body.name, req.body.ingredients, req.body.directions, req.params.id],
         (err, result) => {
             res.redirect('/');
+            client.end();
+        });
+});
+
+// DELETE recipe
+app.delete('/delete/:id', (req, res) => {
+    const client = new Client({
+        user: 'Ostu',
+        host: 'localhost',
+        database: 'recipebookdb',
+        password: '12345',
+        port: 5432,
+    });
+    client.connect();
+    client.query('DELETE FROM recipes WHERE id = $1',
+        [req.params.id],
+        (err, result) => {
+            res.sendStatus(200);
             client.end();
         });
 });
