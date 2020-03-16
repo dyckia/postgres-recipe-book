@@ -22,11 +22,11 @@
                         <%= recipe.directions %>
                     </p>
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-outline-info mr-3 edit-recipe" data-toggle="modal" data-target="#edit-recipe"
+                        <button type="button" class="btn btn-info mr-3 edit-recipe" data-toggle="modal" data-target="#edit-recipe"
                                 data-id="<%= recipe.id %>" data-name="<%= recipe.name %>" data-imgurl="<%= recipe.imgurl %>" data-ingredients="<%= recipe.ingredients %>" data-directions="<%= recipe.directions %>">
                             Edit
                         </button>
-                        <button class="btn btn-outline-danger delete-recipe" data-id="<%= recipe.id %>">
+                        <button class="btn btn-danger delete-recipe" data-id="<%= recipe.id %>">
                             Delete
                         </button>
                     </div>
@@ -36,40 +36,4 @@
     </div>
 <% }) %>
 
-<!-- Modal -->
-<div class="modal fade" id="edit-recipe" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Recipe</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="" id="edit-form">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="edit-form-name">Recipe Name</label>
-                        <input type="text" class="form-control" id="edit-form-name" name="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit-form-imgurl">Image URL</label>
-                        <textarea type="text" class="form-control" id="edit-form-imgurl" name="imgurl" rows="2"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit-form-ingredients">Ingredients</label>
-                        <textarea type="text" class="form-control" id="edit-form-ingredients" name="ingredients" rows="4"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit-form-directions">Directions</label>
-                        <textarea type="text" class="form-control" id="edit-form-directions" name="directions" rows="6"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<%- include('edit-form') %>

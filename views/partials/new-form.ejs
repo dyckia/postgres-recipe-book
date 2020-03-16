@@ -1,0 +1,36 @@
+<div class="modal fade" id="new-recipe" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Recipe</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="/add">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="create-form-name">Recipe Name</label>
+                        <input type="text" class="form-control" id="create-form-name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="create-form-imgurl">Image URL</label>
+                        <textarea type="text" class="form-control" id="create-form-imgurl" name="imgurl" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-form-ingredients">Ingredients</label>
+                        <textarea type="text" class="form-control" id="create-form-ingredients" name="ingredients" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-form-directions">Directions</label>
+                        <textarea type="text" class="form-control" id="create-form-directions" name="directions" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
