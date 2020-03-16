@@ -73,5 +73,5 @@ app.delete('/delete/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log("server is listening on port 3000");
+    console.log('server is listening on port ' + PORT);
 });
