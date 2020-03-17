@@ -1,3 +1,6 @@
+// load dot env variables
+require('dotenv').config()
+
 const express = require('express'),
       bodyParser = require('body-parser'),
       {Client} = require('pg'),
@@ -12,9 +15,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // some constant variables
-const PORT = process.env.PORT || 3000;
-const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://Ostu:12345@localhost:5432/recipebookdb';
-const SSL = process.env.DATABASE_URL ? true : false;
+const PORT = process.env.PORT;
+const DATABASE_URL = process.env.DATABASE_URL;
+const SSL = process.env.SSL == 'true';
+
+console.log(typeof PORT);
+console.log(typeof DATABASE_URL);
+console.log(typeof SSL);
 
 // READ recipe
 app.get('/', (req, res) => {
@@ -76,5 +83,5 @@ app.delete('/delete/:id', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log('server is listening on port ' + PORT);
+    console.log(`server is listening on port ${PORT}`);
 });
