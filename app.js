@@ -1,12 +1,15 @@
 const express = require('express'),
       bodyParser = require('body-parser'),
       {Client} = require('pg'),
-      app = express();
+      app = express(),
+      favicon = require('serve-favicon');
 
 app.set('view engine', 'ejs');
 app.set('view options', {rmWhitespace: true});
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // some constant variables
 const PORT = process.env.PORT || 3000;
